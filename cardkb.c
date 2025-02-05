@@ -1,10 +1,15 @@
-#include "cardkb.h"
-#include <stdio.h>
-#include "driver/i2c.h"
-#include "esp_log.h"
+#include "cardkb.h"             //This is the header file for this source file
+#include "driver/i2c.h"         //This makes the cardkb comunicate with esp32
+#include "esp_log.h"            //This library prints debug log with tags
+#include <stdint.h>             //This is for uint data types
+#include "freertos/FreeRTOS.h"  //This library is used for vTaskDelay() function
+
+static const char *TAG = "CardKB";      //Tag that is on the beggining of debug from this library in serial monitor
 
 void cardKB_init() {
+    ESP_LOGI(TAG, "Initializing cardkb");
     i2c_config_t i2c_config = {
+
         .mode = I2C_MODE_MASTER,
         .sda_io_num = I2C_MASTER_SDA_IO,
         .sda_pullup_en = GPIO_PULLUP_ENABLE,
@@ -16,7 +21,7 @@ void cardKB_init() {
     ESP_ERROR_CHECK(i2c_driver_install(I2C_MASTER_NUM, I2C_MODE_MASTER, I2C_MASTER_RX_BUF_DISABLE, I2C_MASTER_TX_BUF_DISABLE, 0));
 }
 
-char cardkb_read_key() {
+uint8_t cardKB_read_key() {
     i2c_cmd_handle_t cmd = i2c_cmd_link_create();
     uint8_t key = 0x0;
 
@@ -38,3 +43,18 @@ char cardkb_read_key() {
 
     return 0x0;
 }
+
+void cardKB_read_word(uint8_t *output) {
+    uint16_t buffer_count = 0;
+    while (buffer_count < 31) {
+        uint8_t key = cardKB_read_key();
+        if (key != 0x0D || key != 0x20) {
+            output[buffer_count++] = key;
+        } else {
+            break;
+        }
+        vTaskDelay(pdMS_TO_TICKS(2));
+    }
+    output[buffer_count] = '\0';
+}
+
