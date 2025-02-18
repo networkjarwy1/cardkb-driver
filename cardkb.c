@@ -57,4 +57,3 @@ void cardKB_read_word(uint8_t *output) {
     }
     output[buffer_count] = '\0';
 }
-

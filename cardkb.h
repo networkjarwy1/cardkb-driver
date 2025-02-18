@@ -3,6 +3,9 @@ Written by Jaroslav Vizner in January 2025
 Don't change anything if you don't know what are you doing.
 */
 
+#ifndef __CARDKB_H__
+#define __CARDKB_H__
+
 #include <stdint.h>
 #define I2C_MASTER_SCL_IO    CONFIG_I2C_MASTER_SCL_IO       //I2C SCL pin
 #define I2C_MASTER_SDA_IO    CONFIG_I2C_MASTER_SDA_IO       //I2C SDA pin
@@ -16,3 +19,4 @@ void cardKB_init();     //function to initialize cardkb using config from menuco
 uint8_t cardKB_read_key(); //function to read key that is pressed at the moment
 void cardKB_read_word(uint8_t *output);
 
+#endif
