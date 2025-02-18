@@ -17,3 +17,7 @@ void app_main() {
 ```
 
 ### you need to wire the cardkb to I2C bus on esp32, then using menuconfig configure the wiring and you can choose I2C frequncy
+### open components directory of your project in terminal and clone the repository
+```
+git clone https://github.com/networkjarwy1/cardkb-driver.git
+```
