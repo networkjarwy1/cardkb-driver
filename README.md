@@ -37,4 +37,4 @@ void app_main(){
 }
 ```
 
-### you need to wire the cardkb to I2C bus on esp32, then using menuconfig configurate how its wired and you can choose I2C frequncy
+### you need to wire the cardkb to I2C bus on esp32, then using menuconfig configure how its wired and you can choose I2C frequency
