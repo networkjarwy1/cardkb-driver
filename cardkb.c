@@ -6,7 +6,7 @@
 
 static const char *TAG = "CardKB";      //Tag that is on the beggining of debug from this library in serial monitor
 
-void cardKB_init() {
+void cardkb_init() {
     ESP_LOGI(TAG, "Initializing cardkb");
     i2c_config_t i2c_config = {
         .mode = I2C_MODE_MASTER,
@@ -20,7 +20,7 @@ void cardKB_init() {
     ESP_ERROR_CHECK(i2c_driver_install(I2C_MASTER_NUM, I2C_MODE_MASTER, I2C_MASTER_RX_BUF_DISABLE, I2C_MASTER_TX_BUF_DISABLE, 0x0));
 }
 
-uint8_t cardKB_read_key() {
+uint8_t cardkb_read_key() {
     i2c_cmd_handle_t cmd = i2c_cmd_link_create();
     uint8_t key = 0x0;
 
@@ -43,7 +43,7 @@ uint8_t cardKB_read_key() {
     return 0x0;
 }
 
-void cardKB_read_word(uint8_t *output, uint8_t size) {
+void cardkb_read_word(uint8_t *output, uint8_t size) {
     uint8_t buffer_count = 0x0;
     while (buffer_count < size) {
         uint8_t key = cardKB_read_key();

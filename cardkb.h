@@ -15,8 +15,8 @@ Don't change anything if you don't know what are you doing.
 #define I2C_MASTER_RX_BUF_DISABLE 0x0
 #define CARDKB_ADDR          CONFIG_CARDKB_ADDR             // I2C address of cardkb
 
-void cardKB_init();                                         // function to initialize cardkb using config from menuconfig
-uint8_t cardKB_read_key();                                  // function to read key that is pressed at the moment
-void cardKB_read_word(uint8_t *output, uint8_t size);       // function to read word untill enter or space or reached maximum size of word
+void cardkb_init();                                         // function to initialize cardkb using config from menuconfig
+uint8_t cardkb_read_key();                                  // function to read key that is pressed at the moment
+void cardkb_read_word(uint8_t *output, uint8_t size);       // function to read word untill enter or space or reached maximum size of word
 
 #endif
