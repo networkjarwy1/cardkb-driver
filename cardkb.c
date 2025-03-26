@@ -46,7 +46,7 @@ uint8_t cardkb_read_key() {
 void cardkb_read_word(uint8_t *output, uint8_t size) {
     uint8_t buffer_count = 0x0;
     while (buffer_count < size) {
-        uint8_t key = cardKB_read_key();
+        uint8_t key = cardkb_read_key();
         if (key != 0x0D || key != 0x20) {
             output[buffer_count++] = key;
         } else {
