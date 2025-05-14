@@ -1,0 +1,12 @@
+version: "1.0.0"
+description: "Driver for the CardKB I2C keyboard"
+url: "https://github.com/networkjarwy1/cardkb"
+license: "MIT"
+
+# Optional: tag it so ESP-IDF knows it's compatible
+targets:
+  - esp32
+  - esp32s2
+  - esp32s3
+  - esp32c3
+
