@@ -1,6 +1,6 @@
 version: "1.0.0"
 description: "Driver for the CardKB I2C keyboard"
-url: "https://github.com/networkjarwy1/cardkb"
+url: "https://github.com/networkjarwy1/cardkb.git"
 license: "MIT"
 
 # Optional: tag it so ESP-IDF knows it's compatible
